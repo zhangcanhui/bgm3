@@ -26,14 +26,16 @@
   import Vuex from 'vuex';
   export default {
     name: 'Login',
-    data () {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-        memberId:'',
-        password1:'',
-        id:0,
-      }
-    },
+//    data () {
+//      return {
+//        memberId:'',
+//        password1:'',
+//        id:0,
+//        location:'',
+//        longandlati:'',
+//        status:0
+//      }
+//    },
     methods:{
       login:function(){
         var _self=this; //这一句非常重要呀！
@@ -46,7 +48,7 @@
           error: function(error) {//function (xhr, info) {
             alert("用户名或密码错误，请重新输入");
           },
-          success: function (data,status) {
+          success: function (data) {
 
             //返回的是对象，不是List，所以只要从data中取值
             //var  mtext="isOk:"+data.memberid+",id:"+data.id+",userName:"+data.password;//xhr.responseText;
@@ -54,9 +56,15 @@
             // _self.id=data.id;
             // _self.password1=data.password;
             if(data.memberid==_self.memberId&&data.password==_self.password1){
-              alert("验证成功");
-              _self.id=data.id;
+//              _self.id=data.id;
+//              _self.location=data.location;
+              _self.$store.commit('newId',data.id);
+              _self.$store.commit('newMemberid',data.memberid);
+              _self.$store.commit('newLocation',data.location);
+              _self.$store.commit('newLongandlati',data.longandlati);
+              _self.$store.commit('newStatus',data.status);
               window.location="http://localhost:8081/#/View";
+//              this.router.push("/View");    //调用路由链接进行页面的跳转
             }
             //alert("成功执行了身份校验功能：\n"+mtext+","+status);
             // _self.$store.commit('newLoginOk',data.passyn); //一次只能修改一个属性值也

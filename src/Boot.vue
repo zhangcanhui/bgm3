@@ -11,8 +11,7 @@
     </table>
     -->
     <router-view/>
-    <br>
-    数据共享部分:count:{{$store.state.count}},loginok:{{$store.state.loginok}},loginname:{{$store.state.loginname}}
+    <!--数据共享部分:id:{{$store.state.id}},memberid:{{$store.state.memberid}},location:{{this.$store.state.location}},longandlati:{{$store.state.longandlati}},status:{{$store.state.status}}-->
   </div>
 </template>
 
@@ -29,7 +28,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
   }
   #toparea{
     margin: 0;
